@@ -170,6 +170,11 @@ void expose_dependent_variable_setup(py::module &m) {
           py::arg("associated_body"),
           py::arg("central_body"));
 
+    m.def("modified_equinoctial_state",
+		  &tp::modifiedEquinoctialStateDependentVariable,
+		  py::arg("associated_body"),
+		  py::arg("central_body"));
+
     m.def("single_acceleration",
           &tp::singleAccelerationDependentVariable,
           py::arg("acceleration_type"),
@@ -215,6 +220,11 @@ void expose_dependent_variable_setup(py::module &m) {
           py::arg("body"),
           py::arg("central_body"));
 
+	m.def("geodetic_latitude",
+		  &tp::geodeticLatitudeDependentVariable,
+		  py::arg("associated_body"),
+		  py::arg("central_body"));
+
     m.def("longitude",
           &tp::longitudeDependentVariable,
           py::arg("body"),
@@ -245,14 +255,48 @@ void expose_dependent_variable_setup(py::module &m) {
 		  py::arg("body"),
 		  py::arg("central_body"));
 
+	m.def("control_surface_deflection",
+		  &tp::controlSurfaceDeflectionDependentVariable,
+		  py::arg("associated_body"),
+		  py::arg("control_surface"));
+
     m.def("radiation_pressure",
           &tp::radiationPressureDependentVariable,
           py::arg("body"),
           py::arg("radiating_body"));
 
-//    m.def("total_aerodynamic_g_load",
-//		  &tp::total_aerodynamic_g_load_variable,
-//		  );
+	m.def("local_temperature",
+		  &tp::localTemperatureDependentVariable,
+		  py::arg("associated_body"),
+		  py::arg("central_body"));
+
+	m.def("local_dynamic_pressure",
+		  &tp::localDynamicPressureDependentVariable,
+		  py::arg("associated_body"));
+
+	m.def("local_aerodynamic_heat_rate",
+		  &tp::localAerodynamicHeatRateDependentVariable,
+		  py::arg("associated_body"));
+
+    m.def("total_aerodynamic_g_load",
+		  &tp::totalAerodynamicGLoadDependentVariable,
+		  py::arg("associated_body"));
+
+	m.def("stagnation_point_heat_flux",
+		  &tp::stagnationPointHeatFluxDependentVariable,
+		  py::arg("associated_body"));
+
+	m.def("total_mass_rate",
+		  &tp::totalMassRateDependentVariable,
+		  py::arg("associated_body"));
+
+	m.def("total_torque_norm",
+		  &tp::totalTorqueNormDependentVariable,
+		  py::arg("associated_body"));
+
+	m.def("total_torque",
+		  &tp::totalTorqueDependentVariable,
+		  py::arg("associated_body"));
 }
 
 void expose_acceleration_setup(py::module &m) {
