@@ -19,6 +19,7 @@
 #include "expose_astro/expose_reference_frames.h"
 #include "expose_astro/expose_two_body_dynamics.h"
 #include "expose_astro/expose_shape.h"
+#include "expose_astro/expose_low_thrust.h"
 
 #include <pybind11/pybind11.h>
 
@@ -54,6 +55,10 @@ void expose_astro(py::module &m) {
 
   auto shape = m.def_submodule("shape");
   expose_shape(shape);
+
+  auto low_thrust = m.def_submodule("low_thrust");
+  expose_low_thrust(low_thrust);
+
 };
 
 };// namespace tudatpy
